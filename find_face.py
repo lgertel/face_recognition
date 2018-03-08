@@ -6,7 +6,7 @@ import time
 
 welcome = requests.post('https://adtwelcome.mybluemix.net/welcome')
 video_capture = cv2.VideoCapture(0)
-# time.sleep(2)
+time.sleep(2)
 video_capture = cv2.VideoCapture(0)
 ret, frame = video_capture.read()
 
