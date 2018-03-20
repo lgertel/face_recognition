@@ -1,15 +1,14 @@
 import requests
 
 
-files = {'file': open('/Users/lgertel/Downloads/Demo ADT/Marcelo Pelos.jpeg','rb')}
+files = {'file': open('/Users/lgertel/Downloads/Demo ADT/Marco Seraphim.jpeg','rb')}
 r = requests.post('https://adtwelcome.mybluemix.net/face',
     files = files,
     data = {
-        'label':'Marcelo Pelos',
-        'email': 'marcelo.pelos@adtsys.com.br',
-        'type': 0
+        'label':'Marco Seraphim',
+        'email': 'marco.seraphim@adtsys.com.br',
+        'type': 1
     })
-
 
 
 import os
