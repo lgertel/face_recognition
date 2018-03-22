@@ -38,7 +38,8 @@ RUN cd ~ && \
 # If you wanted to use this Dockerfile to run your own app instead, maybe you would do this:
 COPY . /root/adtwelcome
  RUN cd /root/adtwelcome && \
-     pip3 install -r requirements.txt
+     pip3 install -r requirements.txt && \
+     python3 setup.py install
 
 #COPY . /root/face_recognition
 #RUN cd /root/face_recognition && \
@@ -48,6 +49,8 @@ COPY . /root/adtwelcome
 #CMD cd /root/face_recognition/examples && \
 #    python3 recognize_faces_in_pictures.py
 
-
-#FROM nodered/node-red-docker
-#RUN npm install node-red-node-wordpos
+RUN apt-get install nodejs-legacy -y && \
+    apt-get install npm -y && \
+    npm install -g --unsafe-perm node-red node-red-admin -y && \
+    npm install -g n && \
+    n stable
