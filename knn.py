@@ -22,7 +22,7 @@ $ pip3 install scikit-learn
 
 import math
 from sklearn import neighbors
-import os
+import os, shutil
 import os.path
 import pickle
 from PIL import Image, ImageDraw
@@ -174,6 +174,16 @@ if __name__ == "__main__":
     print("Training KNN classifier...")
     classifier = train("knn/train", model_save_path="trained_knn_model.clf", n_neighbors=2)
     print("Training complete!")
+
+    folder = 'knn/train'
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path): shutil.rmtree(file_path)
+        except Exception as e:
+            print(e)
 
     # # STEP 2: Using the trained classifier, make predictions for unknown images
     # for image_file in os.listdir("knn/test"):
