@@ -39,40 +39,10 @@ class MyHandler(PatternMatchingEventHandler):
                 # Print results on the console
                 for name, (top, right, bottom, left) in predictions:
                     print("- Found {} at ({}, {})".format(name, left, top))
-                    r = requests.post('http://10.10.10.168:1880/find-face', data = {'_id':name})
+                    r = requests.post('http://192.168.1.101:1880/find-face', data = {'_id':name})
                     print("call done")
             else:
-                r = requests.post('http://10.10.10.168:1880/no-face')
-
-            # unknown_image = face_recognition.load_image_file(picture_path)
-            #
-            # try:
-            #     know_faces_files = os.listdir("pictures_of_people_i_know")
-            #     images = []
-            #     known_face_encodings = []
-            #
-            #     current_image = 0
-            #     known_face_names = []
-            #     for f in know_faces_files:
-            #         image_path = "./pictures_of_people_i_know/" + f
-            #         images.append(face_recognition.load_image_file(image_path))
-            #         known_face_encodings.append(face_recognition.face_encodings(images[current_image])[0])
-            #         known_face_names.append(f.split(".")[0])
-            #         current_image += 1
-            #
-            #     unknown_face_encoding = face_recognition.face_encodings(unknown_image)[0]
-            #
-            #     # results is an array of True/False telling if the unknown face matched anyone in the known_faces array
-            #     results = face_recognition.compare_faces(known_face_encodings, unknown_face_encoding)
-            #
-            #     name = "Unknown"
-            #     if True in results:
-            #         first_match_index = results.index(True)
-            #         name = known_face_names[first_match_index]
-
-
-            # except IndexError:
-            #     r = requests.post('http://10.10.10.168:1880/no-face')
+                r = requests.post('http://192.168.1.101:1880/no-face')
 
 
     def on_modified(self, event):

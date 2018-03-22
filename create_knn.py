@@ -8,9 +8,9 @@ for file in os.listdir(directory):
     if filename.endswith(".jpeg"):
         dirname = filename.split(".")[0]
         try:
-
-            pathlib.Path("/Users/lgertel/adtwelcome/knn/" + dirname).mkdir(parents=True, exist_ok=True)
-            os.rename("/Users/lgertel/adtwelcome/pictures_of_people_i_know/" + filename, "/Users/lgertel/adtwelcome/knn/" + dirname + "/img01.jpeg")
+            print(dirname)
+            pathlib.Path("/Users/lgertel/adtwelcome/knn/train/" + dirname).mkdir(parents=True, exist_ok=True)
+            os.rename("/Users/lgertel/adtwelcome/pictures_of_people_i_know/" + filename, "/Users/lgertel/adtwelcome/knn/train/" + dirname + "/img01.jpeg")
         except OSError as e:
             if e.errno != errno.EEXIST:
                 raise

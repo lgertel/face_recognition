@@ -8,7 +8,7 @@ for file in os.listdir(directory):
     if filename.endswith(".jpeg"):
         path = os.path.join("/Users/lgertel/adtwelcome/original_photos/", filename)
         file = {'file': open(path,'rb')}
-        r = requests.post('https://adtwelcome.mybluemix.net/face',
+        r = requests.post('http://192.168.1.101:1880/face',
             files = file,
             data = {
                 'label': filename.split('.')[0],
