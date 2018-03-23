@@ -23,6 +23,7 @@ class MyHandler(PatternMatchingEventHandler):
         """
         # the file will be processed there
         print(event.src_path, event.event_type)  # print now only for degug
+        print("Event:" + event.event_type)
         if (event.event_type == "modified"):
             picture_path = "./knn/test/Unknown.jpeg"
 
@@ -41,8 +42,11 @@ class MyHandler(PatternMatchingEventHandler):
                     print("- Found {} at ({}, {})".format(name, left, top))
                     r = requests.post('http://192.168.1.101:1880/find-face', data = {'_id':name})
                     print("call done")
+                    break
             else:
+                print("- No face")
                 r = requests.post('http://192.168.1.101:1880/no-face')
+                print("call done")
 
 
     def on_modified(self, event):
@@ -60,6 +64,7 @@ if __name__ == '__main__':
 
     try:
         while True:
+            print(".")
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()

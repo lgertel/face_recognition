@@ -1,7 +1,7 @@
 import os, errno
 import pathlib
 
-directory = os.fsencode("/Users/lgertel/adtwelcome/pictures_of_people_i_know/")
+directory = os.fsencode("/home/pi/adtwelcome/pictures_of_people_i_know/")
 
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
@@ -9,8 +9,8 @@ for file in os.listdir(directory):
         dirname = filename.split(".")[0]
         try:
             print(dirname)
-            pathlib.Path("/Users/lgertel/adtwelcome/knn/train/" + dirname).mkdir(parents=True, exist_ok=True)
-            os.rename("/Users/lgertel/adtwelcome/pictures_of_people_i_know/" + filename, "/Users/lgertel/adtwelcome/knn/train/" + dirname + "/img01.jpeg")
+            pathlib.Path("/home/pi/adtwelcome/knn/train/" + dirname).mkdir(parents=True, exist_ok=True)
+            os.rename("/home/pi/adtwelcome/pictures_of_people_i_know/" + filename, "/home/pi/adtwelcome/knn/train/" + dirname + "/img01.jpeg")
         except OSError as e:
             if e.errno != errno.EEXIST:
                 raise
